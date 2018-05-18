@@ -159,6 +159,7 @@ func placeDevelopmentSubdirs(expandedName string) {
 	for _, subdir := range subdirs {
 		destination := filepath.Join("/usr/x86_64-w64-mingw32", subdir)
 		if _, err := os.Stat(destination); os.IsNotExist(err) {
+			// TODO gotta do this with sudo because it's not under user's control
 			if err := os.MkdirAll(destination, os.FileMode(0777)|os.ModeDir); err != nil {
 				panic(fmt.Errorf("Creating %s dir: %v", destination, err))
 			}

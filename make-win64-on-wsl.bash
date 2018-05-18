@@ -8,4 +8,5 @@ env CGO_ENABLED="1" CC="/usr/bin/x86_64-w64-mingw32-gcc" GOOS="windows" CGO_LDFL
 mv build.exe out/win64
 cp -r assets out/win64
 # This assumes that the main partition is installed on the C drive, and that the usernames are the same (I think WSL ensures this?)
-cp -r out/win64 /mnt/c/Users/$(whoami)/Desktop
+# WSL does not assume this. Allow the user to specify in param 1
+cp -r out/win64 ${1:-/mnt/c/Users/$(whoami)/Desktop}
